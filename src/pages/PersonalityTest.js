@@ -45,7 +45,7 @@ const PersonalityTest = () => {
 
     return (
         <>
-            <ToastContainer />
+            <ToastContainer style={{ zIndex: 100 }} />
             <div
                 className="h-96 lg:h-72 text-white flex flex-col justify-center items-center"
                 style={{ width: "100%", background: "#33a474" }}>
@@ -95,7 +95,7 @@ const PersonalityTest = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center items-center flex-col gap-4 my-14 ">
+            <div className="flex justify-center items-center flex-col gap-4 my-14 bg-white">
                 <motion.div
                     className="progress-bar"
                     style={{ scaleX: scrollYProgress }}

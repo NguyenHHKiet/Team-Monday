@@ -5,10 +5,13 @@ import ErrorPage from "./error-page";
 import Root from "./routes/root";
 import Contact from "./routes/contact";
 import CircularProgress from "@mui/material/CircularProgress";
+// import MBTIPage from "./mbtiType";
+import { LanguageProvider } from "./Languagecontext";
 import "react-toastify/dist/ReactToastify.css";
 
 const PersonalityTest = lazy(() => import("./pages/PersonalityTest"));
 const ResultTest = lazy(() => import("./pages/Result"));
+const Home = lazy(() => import("./Home"));
 const Loader = () => {
     return (
         <div className="flex text-white min-h-screen justify-center items-center bg-slate-700">
@@ -23,6 +26,16 @@ const router = createBrowserRouter([
         element: <Root />,
         errorElement: <ErrorPage />,
         children: [
+            {
+                index: true,
+                element: (
+                    <Suspense fallback={<Loader />}>
+                        <LanguageProvider>
+                            <Home />
+                        </LanguageProvider>
+                    </Suspense>
+                ),
+            },
             {
                 path: "contacts/:contactId",
                 element: <Contact />,
@@ -51,6 +64,10 @@ const App = () => {
     return (
         <>
             <RouterProvider router={router} />
+            {/* <>
+                <Home />
+                <MBTIPage/>
+            </> */}
         </>
     );
 };
